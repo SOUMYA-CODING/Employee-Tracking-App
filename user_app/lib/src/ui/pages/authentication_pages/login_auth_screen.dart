@@ -10,11 +10,12 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Column(
-          children: [
-
+    return Scaffold(
+      body: SafeArea(
+        child: Column(
+          children: const [
+            Text("Date"),
+            Text("Date"),
           ],
         ),
       ),
