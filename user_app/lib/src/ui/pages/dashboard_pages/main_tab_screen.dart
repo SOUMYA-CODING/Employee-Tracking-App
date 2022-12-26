@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:user_app/src/ui/pages/dashboard_pages/tabs/home_tab_screen.dart';
+import 'package:user_app/src/ui/pages/dashboard_pages/tabs/profie_tab_screen.dart';
+import 'package:user_app/src/ui/pages/dashboard_pages/tabs/settings_tab_screen.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({Key? key}) : super(key: key);
@@ -8,10 +11,27 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
+  // Screens
+  List tabScreen = [
+    const HomeTabScreen(),
+    const ProfileTabScreen(),
+    const SettingsTabScreen(),
+  ];
+
+  int currentIndex = 0;
+
+  void onTap(int index) {
+    setState(() {
+      currentIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
+        currentIndex: currentIndex,
+        onTap: onTap,
         elevation: 0,
         backgroundColor: Colors.blueAccent,
         selectedItemColor: Colors.white,
@@ -38,9 +58,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
           ),
         ],
       ),
-      // body: SafeArea(
-      //   child: ,
-      // ),
+      body: SafeArea(
+        child: tabScreen[currentIndex],
+      ),
     );
   }
 }
